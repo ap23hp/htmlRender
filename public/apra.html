@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="r1">
+        <h1 id="heading" draggable="true">Hello CodeSandbox</h1>
+  <h2>Start editing to see some magic happen!</h2>
+        </div>
+
+        <script>
+
+const heading = document.getElementById('heading');
+
+heading.addEventListener('dragstart', event => {
+  event.dataTransfer.setData('text/plain', event.target.innerHTML);
+});
+
+heading.addEventListener('dragend', event => {
+  event.target.style.opacity = '';
+});
+
+document.body.addEventListener('drop', event => {
+  event.preventDefault();
+  const data = event.dataTransfer.getData('text/plain');
+  event.target.innerHTML = data;
+});
+
+document.body.addEventListener('dragover', event => {
+  event.preventDefault();
+});
+
+        </script>
+</body>
+</html>
